@@ -25,10 +25,8 @@ cors_proxy.createServer({
   originWhitelist: originWhitelist,
   requireHeader: ['origin', 'x-requested-with'],
   checkRateLimit: checkRateLimit,
-  removeHeaders: [
-    'cookie',
-    'cookie2',
-]}).listen(port, host, function() {
+  removeHeaders: ['cookie','cookie2']
+}).listen(port, host, function() {
   console.log('Running CORS Anywhere on ' + host + ':' + port);
   console.log('Origin Whitelist ' + originWhitelist);
 });
