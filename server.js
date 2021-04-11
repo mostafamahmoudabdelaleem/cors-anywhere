@@ -23,7 +23,7 @@ var cors_proxy = require('./lib/cors-anywhere');
 cors_proxy.createServer({
   originBlacklist: originBlacklist,
   originWhitelist: originWhitelist,
-  requireHeader: ['origin', 'x-requested-with'],
+  //requireHeader: ['x-requested-with'],
   checkRateLimit: checkRateLimit,
   removeHeaders: [
     'cookie',
@@ -44,6 +44,10 @@ cors_proxy.createServer({
     // Do not add X-Forwarded-For, etc. headers, because Heroku already adds it.
     xfwd: false,
   },
+  setHeaders: {
+   "origin": "https://watchlycors.azurewebsites.net" ,
+    "x-requested-with": "XMLHttpRequest"
+  }
 }).listen(port, host, function() {
   console.log('Running CORS Anywhere on ' + host + ':' + port);
 });
